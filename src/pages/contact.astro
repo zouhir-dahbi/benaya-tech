@@ -49,7 +49,7 @@ const formAction = `https://formspree.io/f/${formId || 'YOUR_FORM_ID'}`;
         </div>
 
         <!-- Form -->
-        <form x-show="!submitted" x-cloak @submit.prevent="submitForm()" method="POST" action={formAction} class="space-y-8">
+        <form x-show="!submitted" x-cloak @submit.prevent="submitForm($event)" method="POST" action={formAction} class="space-y-8">
           <input type="hidden" name="_subject" value="New service request — Benaya Tech website" />
           <!-- Honeypot: hidden from humans, catches most bots -->
           <div class="hidden" aria-hidden="true">
@@ -150,14 +150,14 @@ const formAction = `https://formspree.io/f/${formId || 'YOUR_FORM_ID'}`;
           const type = params.get('type');
           if (type === 'residential' || type === 'commercial') this.customerType = type;
         },
-        async submitForm() {
+        async submitForm(event) {
           if (!FORM_ID) {
             this.error = 'The online form is not available yet. Please call us instead.';
             return;
           }
           this.sending = true;
           this.error = null;
-          const data = new FormData(this.$el.querySelector('form'));
+          const data = new FormData(event.target);
           try {
             const res = await fetch(FORM_ACTION, {
               method: 'POST',

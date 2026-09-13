@@ -38,6 +38,7 @@ jobs:
         env:
           SITE_URL: https://zouhir-dahbi.github.io
           BASE_PATH: /veyra-security
+          PUBLIC_FORMSPREE_ID: xeaqbrey
         run: npm run build
 
       - name: Upload artifact
