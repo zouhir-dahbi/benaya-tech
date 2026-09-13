@@ -31,11 +31,13 @@ jobs:
         run: npm ci
 
       - name: Build with Astro
-        # Project page at https://zouhir-dahbi.github.io/benaya-tech
-        # If you move to a custom domain or user page, set BASE_PATH: /
+        # TODO: this repo is still named "veyra-security" on GitHub — once it's
+        # renamed to "benaya-tech" (see README), flip BASE_PATH/SITE_URL below
+        # to match, otherwise the deployed asset paths won't line up with the
+        # actual Pages URL.
         env:
           SITE_URL: https://zouhir-dahbi.github.io
-          BASE_PATH: /benaya-tech
+          BASE_PATH: /veyra-security
         run: npm run build
 
       - name: Upload artifact
