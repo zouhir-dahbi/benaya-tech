@@ -5,5 +5,6 @@ export const navItems: NavItem[] = [
   { label: 'Wi-Fi', href: '/wifi-networking' },
   { label: 'Security', href: '/security' },
   { label: 'Installation', href: '/installation' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
 ];
