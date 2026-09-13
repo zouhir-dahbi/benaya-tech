@@ -138,10 +138,8 @@ const formAction = `https://formspree.io/f/${formId || 'YOUR_FORM_ID'}`;
     </div>
   </section>
 
-  <script is:inline>
-    const FORM_ID = ${JSON.stringify(formId)};
-    const FORM_ACTION = ${JSON.stringify(formAction)};
-    function assessmentForm() {
+  <script is:inline define:vars={{ FORM_ID: formId, FORM_ACTION: formAction }}>
+    window.assessmentForm = function assessmentForm() {
       return {
         customerType: null,
         submitted: false,
