@@ -40,7 +40,7 @@ const faqs = [
         </ul>
         <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_2117320883.jpeg')} alt="Technician terminating structured network cabling" class="rounded-2xl w-full shadow-card" />
+      <img src={withBase('/images/AdobeStock_1125746852.jpeg')} alt="Wireless router set up in a living space for whole-home Wi-Fi coverage" class="rounded-2xl w-full shadow-card" />
     </div>
   </section>
 
@@ -77,16 +77,21 @@ const faqs = [
         </ul>
         <a href={withBase('/contact?type=residential')} class="btn-outline">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_1909113338.jpeg')} alt="Technician wiring a network connection" class="rounded-2xl w-full shadow-card" />
+      <img src={withBase('/images/AdobeStock_2117320883.jpeg')} alt="Technician terminating structured network cabling" class="rounded-2xl w-full shadow-card" />
     </div>
   </section>
 
   <!-- Home office (light gray) -->
   <section id="home-office" class="bg-slate-50 py-20 scroll-mt-24">
-    <div class="container mx-auto px-4 text-center max-w-2xl mx-auto">
-      <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Home Office Networking</h2>
-      <p class="text-slate-600 mb-6">Working from home shouldn't mean fighting your Wi-Fi. We set up reliable connectivity, Ethernet, and cable management for a home office that actually holds up to video calls and real work.</p>
-      <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_422554593.jpeg')} alt="Router set up to support a reliable home office network" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Home Office Networking</h2>
+        <p class="text-slate-600 mb-6">Working from home shouldn't mean fighting your Wi-Fi. We set up reliable connectivity, Ethernet, and cable management for a home office that actually holds up to video calls and real work.</p>
+        <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
+      </div>
     </div>
   </section>
 
