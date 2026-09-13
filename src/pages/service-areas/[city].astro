@@ -20,11 +20,22 @@ const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
 const nearby = area.nearby
   .map((slug) => serviceAreas.find((a) => a.slug === slug))
   .filter(Boolean) as typeof serviceAreas;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL(withBase('/'), Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: new URL(withBase('/service-areas'), Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: area.city, item: Astro.url.href },
+  ],
+};
 ---
 
 <BaseLayout
   title={`Home Technology Installation in ${area.city}, VA | Benaya Tech`}
   description={area.metaDescription}
+  jsonLd={[breadcrumbLd]}
 >
   <PageHeader
     eyebrow={`Serving ${area.city}`}

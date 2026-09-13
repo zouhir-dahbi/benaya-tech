@@ -55,7 +55,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Leesburg',
     group: 'Loudoun County',
     metaDescription:
-      'Smart home, Wi-Fi, security, and technology installation for homes and businesses in Leesburg, VA. Serving historic Old Town Leesburg and surrounding neighborhoods.',
+      'Smart home, Wi-Fi, security, and technology installation in Leesburg, VA — serving historic Old Town Leesburg and surrounding neighborhoods.',
     intro:
       "Leesburg mixes a historic Old Town core of small shops and restaurants with newer suburban subdivisions and the rural edge of Loudoun's wine country. As the county seat, it also has a steady base of professional and government-adjacent offices. We serve homeowners and businesses across all of it.",
     residential:
@@ -83,7 +83,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Sterling',
     group: 'Loudoun County',
     metaDescription:
-      'Smart home, Wi-Fi, security, and technology installation in Sterling, VA. Serving Sterling homes, offices, and warehouse properties near Route 28 and Dulles Airport.',
+      'Smart home, Wi-Fi, security, and technology installation in Sterling, VA, near Route 28 and Dulles Airport, for homes, offices, and warehouses.',
     intro:
       "Sterling sits right next to Washington Dulles International Airport, with a strong logistics, warehouse, and data-center corridor along Route 28 alongside established residential neighborhoods built from the 1980s onward. We handle both the commercial and residential sides.",
     residential:
@@ -167,7 +167,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Chantilly',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Smart home, Wi-Fi, security, and technology installation in Chantilly, VA for homes and light-industrial properties, near Dulles Airport and the Route 50 corridor.',
+      'Smart home, Wi-Fi, security, and technology installation in Chantilly, VA for homes and light-industrial properties near Dulles Airport.',
     intro:
       "Chantilly combines suburban residential subdivisions with a light-industrial and warehouse corridor, helped by its proximity to Dulles Airport. We serve both the neighborhoods and the commercial and light-industrial properties in the area.",
     residential:
@@ -223,7 +223,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Fairfax',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Smart home, Wi-Fi, security, and technology installation in the City of Fairfax, VA — established neighborhoods, Old Town Fairfax, and George Mason University-area properties.',
+      'Smart home, Wi-Fi, security, and technology installation in the City of Fairfax, VA — Old Town Fairfax and George Mason University-area properties.',
     intro:
       "The City of Fairfax is an independent city with its own established single-family neighborhoods, the Old Town Fairfax historic district, and a notable base of off-campus rental housing near George Mason University. We serve homeowners, landlords, and businesses across the city.",
     residential:
@@ -307,7 +307,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Falls Church',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Smart home, Wi-Fi, security, and technology installation in Falls Church, VA — the "Little City" — for walkable neighborhoods, local shops, and small businesses.',
+      'Smart home, Wi-Fi, security, and technology installation in Falls Church, VA — walkable neighborhoods, local shops, and small businesses.',
     intro:
       "Falls Church is a compact independent city — nicknamed “The Little City” — of roughly two square miles, with a walkable downtown of local shops and restaurants and ongoing mixed-use redevelopment along Route 7. It sits between Arlington and Fairfax County. We serve its homeowners and small businesses.",
     residential:
@@ -335,7 +335,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Arlington',
     group: 'Arlington',
     metaDescription:
-      'Smart home, Wi-Fi, security, and technology installation in Arlington, VA for condos, offices, and mixed-use properties across the Rosslyn-Ballston and National Landing corridors.',
+      'Smart home, Wi-Fi, security, and technology installation in Arlington, VA for condos, offices, and properties across Rosslyn-Ballston and National Landing.',
     intro:
       "Arlington is a dense, urban jurisdiction just across the Potomac from Washington, D.C., with high-rise condo and apartment corridors like Rosslyn-Ballston and National Landing, extensive Metro access, and a large office and government-adjacent employment base. Its housing skews heavily toward condos and apartments rather than detached homes.",
     residential:
