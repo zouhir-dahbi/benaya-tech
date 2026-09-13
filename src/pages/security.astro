@@ -9,10 +9,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
 
 const outcomes = [
-  ['Visibility', "Know what's happening around your property."],
-  ['Control', 'View and manage cameras from anywhere.'],
-  ['Reliability', 'Coverage that works when you need it to.'],
-  ['Professional Install', 'Planned, wired, and tested by someone who does this daily.'],
+  ['Visibility', "Know what's happening around your property.", 'M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z|M15 12a3 3 0 11-6 0 3 3 0 016 0z'],
+  ['Control', 'View and manage cameras from anywhere.', 'M2 8a4 4 0 014-4h12a4 4 0 014 4v8a4 4 0 01-4 4H6a4 4 0 01-4-4V8z|M16 12a2 2 0 11-4 0 2 2 0 014 0z'],
+  ['Reliability', 'Coverage that works when you need it to.', 'M12 3l7 3v6c0 4.97-3.05 8.5-7 9-3.95-.5-7-4.03-7-9V6l7-3z'],
+  ['Professional Install', 'Planned, wired, and tested by someone who does this daily.', 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
 ];
 
 const faqs = [
@@ -36,9 +36,14 @@ const faqs = [
   <!-- Outcomes (white) -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-        {outcomes.map(([title, body]) => (
-          <div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {outcomes.map(([title, body, icon]) => (
+          <div class="card card-hover p-6 text-center">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {icon.split('|').map((d) => <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d={d} />)}
+              </svg>
+            </div>
             <h3 class="font-display font-semibold text-lg text-ink mb-1">{title}</h3>
             <p class="text-sm text-slate-600">{body}</p>
           </div>
