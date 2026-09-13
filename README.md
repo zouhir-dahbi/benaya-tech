@@ -60,13 +60,14 @@ Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with Ast
 
 This site intentionally ships without certain content until real, verified information exists. **Do not replace these with fabricated info:**
 
-- [ ] Replace the Formspree placeholder in `src/pages/contact.astro` (`action="https://formspree.io/f/YOUR_FORM_ID"`) with a real form handler. Static hosting can't process form submissions server-side.
-- [x] Phone number wired in (header call button, footer, contact page) — single-sourced in `src/data/site.ts`. Still add a real email address.
+- [x] Formspree wired to a real form (`PUBLIC_FORMSPREE_ID`, set in `.github/workflows/deploy.yml`) — confirm the first-submission email from Formspree to fully activate it.
+- [x] Phone and email wired in (header, footer, contact page) — single-sourced in `src/data/site.ts`.
+- [x] Production domain set (`benayatech.com` via `public/CNAME` + `SITE_URL`) — sitemap and canonical/OG URLs follow automatically.
+- [ ] Replace the social placeholders in `src/data/site.ts` (`social.facebook/instagram/youtube`) with real profile URLs once those accounts exist, and add them to the `LocalBusiness` JSON-LD `sameAs` in `BaseLayout.astro`. Don't publish placeholder URLs as structured data.
 - [ ] Do **not** add "Licensed," "Insured," "Certified," "Bonded," "Authorized," or "Approved" anywhere until verified documentation exists.
 - [ ] Do **not** add reviews/testimonials until they are real.
 - [ ] Do **not** add a street address or "located in [city]" language unless a real business location is confirmed.
 - [ ] Confirm which service-area cities are actually authorized/intended before launch.
-- [ ] Set the production domain (`SITE_URL`), then re-enable a sitemap (`@astrojs/sitemap`) and add its URL to `public/robots.txt`.
 - [ ] Add analytics / Google Business Profile once accounts exist.
 
 ## Notes
