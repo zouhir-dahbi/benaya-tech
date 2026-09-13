@@ -31,11 +31,15 @@ jobs:
         run: npm ci
 
       - name: Build with Astro
-        # Custom domain (public/CNAME) means the site serves from the domain
-        # root regardless of the GitHub repo's name, so BASE_PATH stays '/'.
+        # TODO: benayatech.com custom domain isn't live yet (DNS incomplete +
+        # the repo's Settings -> Pages -> Custom domain field still needs to
+        # be set, which requires admin access this token doesn't have). Until
+        # then, keep building for the /veyra-security subpath that's actually
+        # serving the site, or every asset path 404s. Flip SITE_URL to
+        # https://benayatech.com and BASE_PATH to / once the domain is live.
         env:
-          SITE_URL: https://benayatech.com
-          BASE_PATH: /
+          SITE_URL: https://zouhir-dahbi.github.io
+          BASE_PATH: /veyra-security
           PUBLIC_FORMSPREE_ID: xeaqbrey
         run: npm run build
 
