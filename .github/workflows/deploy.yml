@@ -31,15 +31,14 @@ jobs:
         run: npm ci
 
       - name: Build with Astro
-        # TODO: benayatech.com custom domain isn't live yet (DNS incomplete +
-        # the repo's Settings -> Pages -> Custom domain field still needs to
-        # be set, which requires admin access this token doesn't have). Until
-        # then, keep building for the /veyra-security subpath that's actually
-        # serving the site, or every asset path 404s. Flip SITE_URL to
-        # https://benayatech.com and BASE_PATH to / once the domain is live.
+        # Repo is now zouhir-dahbi/benaya-tech with benayatech.com registered
+        # as its custom domain (public/CNAME + Settings -> Pages). GitHub
+        # redirects the github.io URL to this domain regardless of BASE_PATH,
+        # so build for the final target even while apex DNS is still
+        # propagating.
         env:
-          SITE_URL: https://zouhir-dahbi.github.io
-          BASE_PATH: /veyra-security
+          SITE_URL: https://benayatech.com
+          BASE_PATH: /
           PUBLIC_FORMSPREE_ID: xeaqbrey
         run: npm run build
 
