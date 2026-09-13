@@ -7,7 +7,7 @@ Built with **Astro** + **Tailwind CSS**, with light interactivity from **Alpine.
 ## Tech stack
 
 - **Astro** — component-based static site generator (no per-page duplication; header/footer/sections written once)
-- **Tailwind CSS** — compiled via `@astrojs/tailwind` (a real build, not the CDN)
+- **Tailwind CSS** — compiled via Astro's built-in PostCSS support (`postcss.config.mjs`), not the CDN
 - **Alpine.js** — small runtime for the mobile menu and FAQ accordions, and the dynamic contact form
 - **Space Grotesk** (display) + **Inter** (body) via Google Fonts
 

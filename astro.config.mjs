@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 
 // If deploying to a GitHub *project* page (e.g. username.github.io/benaya-tech),
 // set SITE to your Pages URL and BASE to '/benaya-tech'.
@@ -13,7 +12,6 @@ export default defineConfig({
   base: BASE,
   trailingSlash: 'ignore',
   integrations: [
-    tailwind({ applyBaseStyles: false }),
     sitemap({
       // Exclude noindex redirect stubs from the sitemap so it only lists canonical, indexable URLs.
       filter: (page) => !/\/(residential|commercial)\/?$/.test(page),
