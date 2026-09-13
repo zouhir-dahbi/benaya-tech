@@ -1,19 +1,27 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import { serviceAreas } from '../data/serviceAreas';
 import { site } from '../data/site';
+import heroImg from '../images/AdobeStock_2123545446.jpeg';
+import smartHomeImg from '../images/AdobeStock_1760958129.jpeg';
+import wifiImg from '../images/AdobeStock_2117320883.jpeg';
+import securityImg from '../images/AdobeStock_1282055483.jpeg';
+import installationImg from '../images/AdobeStock_1829282770.jpeg';
+import residentialImg from '../images/AdobeStock_769078732.jpeg';
+import commercialImg from '../images/AdobeStock_2121774243.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
 
 const pillars = [
-  ['Smart Home', 'Make your devices work together.', '/smart-home', '/images/AdobeStock_1760958129.jpeg', 'Homeowner controlling a smart-home device from a phone'],
-  ['Wi-Fi & Networking', 'Reliable connectivity throughout your property.', '/wifi-networking', '/images/AdobeStock_2117320883.jpeg', 'Technician terminating structured network cabling'],
-  ['Security', 'Professional cameras and connected security.', '/security', '/images/AdobeStock_1282055483.jpeg', 'Professionally installed security camera'],
-  ['Installation', 'Clean installation without the DIY frustration.', '/installation', '/images/AdobeStock_1829282770.jpeg', 'Technician mounting equipment on a wall'],
+  ['Smart Home', 'Make your devices work together.', '/smart-home', smartHomeImg, 'Homeowner controlling a smart-home device from a phone'],
+  ['Wi-Fi & Networking', 'Reliable connectivity throughout your property.', '/wifi-networking', wifiImg, 'Technician terminating structured network cabling'],
+  ['Security', 'Professional cameras and connected security.', '/security', securityImg, 'Professionally installed security camera'],
+  ['Installation', 'Clean installation without the DIY frustration.', '/installation', installationImg, 'Technician mounting equipment on a wall'],
 ];
 
 const problems = [
@@ -33,11 +41,12 @@ const homeFaqs = [
   { q: 'Can you handle Wi-Fi, cameras, and installation in the same visit?', a: 'Yes — many customers have a list of technology tasks. Tell us what you need and we\'ll plan the visit around it.' },
   { q: 'What areas do you serve?', a: `We serve homeowners and small businesses throughout Northern Virginia. <a href="${withBase('/service-areas')}" class="text-primary hover:underline">See our full list of service areas</a>.` },
 ];
+
 ---
 
 <BaseLayout
-  title="Benaya Tech | Smart Home, Wi-Fi, Security & Installation in Northern Virginia"
-  description="Benaya Tech plans, installs, configures, and tests smart-home, Wi-Fi and networking, security, and technology installation projects for homes and small businesses throughout Northern Virginia."
+  title="Benaya Tech | Smart Home Installation in Northern Virginia"
+  description="Benaya Tech plans, installs, and configures smart home, Wi-Fi, security, and technology installation for homes and businesses in Northern Virginia."
 >
   <!-- Hero (light) -->
   <section class="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white">
@@ -60,7 +69,7 @@ const homeFaqs = [
           </div>
         </div>
         <div class="relative animate-fade-in">
-          <img src={withBase('/images/AdobeStock_2123545446.jpeg')} alt="Smart lock with fingerprint access on a home entry door" class="rounded-2xl shadow-card-hover w-full" />
+          <Image src={heroImg} alt="Smart lock with fingerprint access on a home entry door" class="rounded-2xl shadow-card-hover w-full" width={1024} widths={[480, 768, 1024]} sizes="(min-width: 1024px) 560px, 100vw" loading="eager" fetchpriority="high" />
           <div class="absolute -bottom-5 -left-5 bg-white rounded-xl shadow-card-hover p-4 hidden md:flex items-center gap-3">
             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -86,7 +95,7 @@ const homeFaqs = [
         {pillars.map(([title, body, href, img, alt]) => (
           <a href={withBase(href)} class="card card-hover overflow-hidden group">
             <div class="relative h-40 overflow-hidden">
-              <img src={withBase(img)} alt={alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src={img} alt={alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={480} widths={[320, 480]} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
             </div>
             <div class="p-6">
               <h3 class="font-display font-bold text-lg text-ink mb-1">{title}</h3>
@@ -108,7 +117,7 @@ const homeFaqs = [
       <div class="grid md:grid-cols-2 gap-8">
         <div class="card card-hover overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
-            <img src={withBase('/images/AdobeStock_769078732.jpeg')} alt="Homeowner unlocking a smart lock with a phone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <Image src={residentialImg} alt="Homeowner unlocking a smart lock with a phone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={640} widths={[400, 640]} sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
           <div class="p-8">
             <h3 class="font-display font-bold text-2xl text-ink mb-3">For Your Home</h3>
@@ -118,7 +127,7 @@ const homeFaqs = [
         </div>
         <div class="card card-hover overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
-            <img src={withBase('/images/AdobeStock_2121774243.jpeg')} alt="Employee badging in at an access-control reader" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <Image src={commercialImg} alt="Employee badging in at an access-control reader" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={640} widths={[400, 640]} sizes="(min-width: 768px) 50vw, 100vw" />
           </div>
           <div class="p-8">
             <h3 class="font-display font-bold text-2xl text-ink mb-3">For Your Business</h3>

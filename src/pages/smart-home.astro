@@ -1,9 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
+import deviceControlImg from '../images/AdobeStock_1760958129.jpeg';
+import smartLockImg from '../images/AdobeStock_769078732.jpeg';
+import automationImg from '../images/AdobeStock_840472320.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
@@ -39,7 +43,7 @@ const faqs = [
         </ul>
         <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_1760958129.jpeg')} alt="Homeowner controlling a smart-home device from a phone" class="rounded-2xl w-full shadow-card" />
+      <Image src={deviceControlImg} alt="Homeowner controlling a smart-home device from a phone" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 
@@ -47,7 +51,7 @@ const faqs = [
   <section id="locks-doorbells" class="bg-slate-50 py-20 scroll-mt-24">
     <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div class="order-2 lg:order-1">
-        <img src={withBase('/images/AdobeStock_769078732.jpeg')} alt="Unlocking a smart door lock with a mobile phone" class="rounded-2xl w-full shadow-card" />
+        <Image src={smartLockImg} alt="Unlocking a smart door lock with a mobile phone" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </div>
       <div class="order-1 lg:order-2">
         <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Smart Locks &amp; Video Doorbells</h2>
@@ -76,7 +80,7 @@ const faqs = [
         </ul>
         <p class="text-sm text-slate-500">We recommend what fits your home and budget — not every device or platform is a good fit for every household.</p>
       </div>
-      <img src={withBase('/images/AdobeStock_840472320.jpeg')} alt="Connected smart home with lighting, climate, and device automation" class="rounded-2xl w-full shadow-card" />
+      <Image src={automationImg} alt="Connected smart home with lighting, climate, and device automation" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 

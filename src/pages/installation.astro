@@ -1,9 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
+import tvMountImg from '../images/AdobeStock_1829282770.jpeg';
+import cableManagementImg from '../images/AdobeStock_1909113338.jpeg';
+import techInstallImg from '../images/AdobeStock_2029345533.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
@@ -40,7 +44,7 @@ const faqs = [
         </ul>
         <a href={withBase('/contact')} class="btn-primary">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_1829282770.jpeg')} alt="Technician mounting equipment on a wall" class="rounded-2xl w-full shadow-card" />
+      <Image src={tvMountImg} alt="Technician mounting equipment on a wall" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 
@@ -48,7 +52,7 @@ const faqs = [
   <section id="cable-management" class="bg-slate-50 py-20 scroll-mt-24">
     <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div class="order-2 lg:order-1">
-        <img src={withBase('/images/AdobeStock_1909113338.jpeg')} alt="Technician organizing wiring" class="rounded-2xl w-full shadow-card" />
+        <Image src={cableManagementImg} alt="Technician organizing wiring" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </div>
       <div class="order-1 lg:order-2">
         <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Wire &amp; Cable Management</h2>
@@ -77,7 +81,7 @@ const faqs = [
         </ul>
         <a href={withBase('/contact')} class="btn-outline">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_2029345533.jpeg')} alt="Technician setting up home technology equipment" class="rounded-2xl w-full shadow-card" />
+      <Image src={techInstallImg} alt="Technician setting up home technology equipment" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 

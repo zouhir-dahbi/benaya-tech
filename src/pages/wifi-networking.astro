@@ -1,9 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
+import wholeHomeWifiImg from '../images/AdobeStock_1125746852.jpeg';
+import troubleshootingImg from '../images/AdobeStock_2029345533.jpeg';
+import ethernetImg from '../images/AdobeStock_2117320883.jpeg';
+import homeOfficeImg from '../images/AdobeStock_422554593.jpeg';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
@@ -40,7 +45,7 @@ const faqs = [
         </ul>
         <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_1125746852.jpeg')} alt="Wireless router set up in a living space for whole-home Wi-Fi coverage" class="rounded-2xl w-full shadow-card" />
+      <Image src={wholeHomeWifiImg} alt="Wireless router set up in a living space for whole-home Wi-Fi coverage" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 
@@ -48,7 +53,7 @@ const faqs = [
   <section id="troubleshooting" class="bg-slate-50 py-20 scroll-mt-24">
     <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div class="order-2 lg:order-1">
-        <img src={withBase('/images/AdobeStock_2029345533.jpeg')} alt="Technician diagnosing network equipment" class="rounded-2xl w-full shadow-card" />
+        <Image src={troubleshootingImg} alt="Technician diagnosing network equipment" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </div>
       <div class="order-1 lg:order-2">
         <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Wi-Fi Troubleshooting</h2>
@@ -77,7 +82,7 @@ const faqs = [
         </ul>
         <a href={withBase('/contact?type=residential')} class="btn-outline">Request Service</a>
       </div>
-      <img src={withBase('/images/AdobeStock_2117320883.jpeg')} alt="Technician terminating structured network cabling" class="rounded-2xl w-full shadow-card" />
+      <Image src={ethernetImg} alt="Technician terminating structured network cabling" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 
@@ -85,7 +90,7 @@ const faqs = [
   <section id="home-office" class="bg-slate-50 py-20 scroll-mt-24">
     <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div class="order-2 lg:order-1">
-        <img src={withBase('/images/AdobeStock_422554593.jpeg')} alt="Router set up to support a reliable home office network" class="rounded-2xl w-full shadow-card" />
+        <Image src={homeOfficeImg} alt="Router set up to support a reliable home office network" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </div>
       <div class="order-1 lg:order-2">
         <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Home Office Networking</h2>

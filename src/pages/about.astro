@@ -1,10 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import CtaBanner from '../components/CtaBanner.astro';
-
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+import teamImg from '../images/AdobeStock_1829282770.jpeg';
 
 const beliefs = [
   ['No Scare Tactics', "We talk about reliability, connectivity, and control — not manufactured fear."],
@@ -16,7 +15,7 @@ const beliefs = [
 
 <BaseLayout
   title="About Us | Benaya Tech"
-  description="Benaya Tech designs, installs, configures, tests, documents, and supports smart-home, Wi-Fi, security, and technology installation projects throughout Northern Virginia."
+  description="Benaya Tech designs, installs, configures, and supports smart-home, Wi-Fi, security, and technology installation projects throughout Northern Virginia."
 >
   <PageHeader
     title="About Benaya Tech"
@@ -30,7 +29,7 @@ const beliefs = [
         <p class="text-slate-600 mb-4">Most people encounter home technology in one of two ways: an expensive, opaque vendor, or a box of consumer devices they have to figure out themselves. We built Benaya Tech to be the option in between — a local team that treats a home the same way it treats a small business: with a real assessment, a real plan, and a real installation, not a one-size-fits-all package.</p>
         <p class="text-slate-600">We work the same disciplined process on every property — assessment, design, installation, configuration, testing, documentation, and support — so the outcome doesn't depend on luck, whether the job is a single TV mount or a whole-home network.</p>
       </div>
-      <img src={withBase('/images/AdobeStock_1829282770.jpeg')} alt="Technician installing equipment with a homeowner nearby" class="rounded-2xl w-full shadow-card" />
+      <Image src={teamImg} alt="Technician installing equipment with a homeowner nearby" class="rounded-2xl w-full shadow-card" width={960} widths={[400, 640, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
     </div>
   </section>
 
