@@ -16,55 +16,30 @@ const isActive = (href: string) => {
 ---
 
 <header
-  x-data="{ mobileOpen: false, openMenu: null }"
+  x-data="{ mobileOpen: false }"
   class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200"
 >
   <nav class="container mx-auto px-4">
     <div class="flex items-center justify-between h-20">
       <!-- Logo (text wordmark) -->
-      <a href={withBase('/')} class="flex flex-col leading-none shrink-0">
+      <a href={withBase('/')} class="flex items-center leading-none shrink-0">
         <span class="font-display font-bold text-2xl md:text-3xl text-ink tracking-tight">{site.shortName}</span>
-        <span class="text-[10px] md:text-xs font-semibold text-primary tracking-[0.2em] uppercase">Home Technology</span>
       </a>
 
       <!-- Desktop nav -->
-      <div class="hidden xl:flex items-center gap-5 text-sm">
-        {navItems.map((item) =>
-          item.children ? (
-            <div class="relative" @mouseenter="openMenu = $el" @mouseleave="openMenu = null">
-              <a
-                href={withBase(item.href)}
-                class:list={['nav-link flex items-center gap-1', isActive(item.href) && 'active']}
-              >
-                {item.label}
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </a>
-              <div
-                x-show="openMenu === $el.parentElement || openMenu === $el"
-                x-cloak
-                x-transition.opacity
-                class="absolute top-full left-0 pt-3 w-64"
-              >
-                <div class="bg-white border border-slate-200 rounded-xl shadow-lg py-2">
-                  {item.children.map((child) => (
-                    <a href={withBase(child.href)} class="nav-dropdown-link">{child.label}</a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ) : (
-            <a
-              href={withBase(item.href)}
-              class:list={['nav-link', isActive(item.href) && 'active']}
-            >
-              {item.label}
-            </a>
-          )
-        )}
+      <div class="hidden lg:flex items-center gap-6 text-sm">
+        {navItems.map((item) => (
+          <a
+            href={withBase(item.href)}
+            class:list={['nav-link', isActive(item.href) && 'active']}
+          >
+            {item.label}
+          </a>
+        ))}
       </div>
 
       <!-- CTA -->
-      <div class="hidden xl:flex items-center gap-4 shrink-0">
+      <div class="hidden lg:flex items-center gap-4 shrink-0">
         <a href={site.phoneHref} class="inline-flex items-center gap-2 text-primary font-semibold whitespace-nowrap hover:text-primary-dark transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
           {site.phoneDisplay}
@@ -73,15 +48,16 @@ const isActive = (href: string) => {
       </div>
 
       <!-- Mobile toggle -->
-      <button @click="mobileOpen = !mobileOpen" class="xl:hidden p-2 text-slate-700" aria-label="Toggle menu">
+      <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-2 text-slate-700" aria-label="Toggle menu">
         <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
         <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
 
     <!-- Mobile menu -->
-    <div x-show="mobileOpen" x-cloak x-transition class="xl:hidden pb-4 border-t border-slate-200 pt-3">
+    <div x-show="mobileOpen" x-cloak x-transition class="lg:hidden pb-4 border-t border-slate-200 pt-3">
       <div class="flex flex-col">
+        <a href={withBase('/')} class:list={['nav-link-mobile', isActive('/') && 'active']}>Home</a>
         {navItems.map((item) => (
           <a
             href={withBase(item.href)}
@@ -90,6 +66,9 @@ const isActive = (href: string) => {
             {item.label}
           </a>
         ))}
+        <a href={withBase('/small-business')} class="nav-link-mobile">Small Business</a>
+        <a href={withBase('/service-areas')} class="nav-link-mobile">Service Areas</a>
+        <a href={withBase('/contact')} class="nav-link-mobile">Contact</a>
         <a href={site.phoneHref} class="btn-outline text-center mt-3 inline-flex items-center justify-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
           Call {site.phoneDisplay}

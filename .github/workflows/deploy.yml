@@ -31,11 +31,11 @@ jobs:
         run: npm ci
 
       - name: Build with Astro
-        # Project page at https://zouhir-dahbi.github.io/veyra-security
+        # Project page at https://zouhir-dahbi.github.io/benaya-tech
         # If you move to a custom domain or user page, set BASE_PATH: /
         env:
           SITE_URL: https://zouhir-dahbi.github.io
-          BASE_PATH: /veyra-security
+          BASE_PATH: /benaya-tech
         run: npm run build
 
       - name: Upload artifact
