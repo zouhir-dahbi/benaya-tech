@@ -21,14 +21,22 @@ const isActive = (href: string) => {
 >
   <nav class="container mx-auto px-4">
     <div class="flex items-center justify-between h-20">
-      <!-- Horizontal logo for the light navigation background. -->
+      <!-- Tagline is only legible once the nav has xl room, so narrower screens get the compact lockup. -->
       <a href={withBase('/')} aria-label={`${site.name} home`} class="flex items-center shrink-0 p-1">
         <img
-          src={withBase('/brand/benaya-logo-horizontal.svg')}
+          src={withBase('/brand/benaya-logo-lockup-compact.svg')}
           alt={site.name}
-          width="1301"
-          height="522"
-          class="h-12 md:h-14 w-auto"
+          width="630"
+          height="100"
+          class="h-8 sm:h-9 lg:h-8 w-auto xl:hidden"
+          decoding="async"
+        />
+        <img
+          src={withBase('/brand/benaya-logo-lockup.svg')}
+          alt={site.name}
+          width="638"
+          height="100"
+          class="hidden xl:block h-11 w-auto"
           decoding="async"
         />
       </a>

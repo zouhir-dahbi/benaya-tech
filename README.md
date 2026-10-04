@@ -47,6 +47,9 @@ The supplied Benaya Tech brand kit is installed in `public/brand/` (logos) and
 `public/` (browser icons, app icons, manifest, and social-sharing image).
 
 - Use `benaya-logo-horizontal.svg` on light backgrounds and the `-white` variant on dark backgrounds.
+- `benaya-logo-lockup*.svg` are header lockups derived from that artwork: identical paths and type design,
+  rescaled so the wordmark cap height is half the mark height (the kit ratio renders the name at ~7px in a
+  nav bar). `-compact` drops the tagline for narrow viewports; each has a `-white` variant.
 - Use the stacked logo for larger identity placements such as the About page.
 - Use the standalone mark for compact placements, and PNG variants where SVG is unsupported.
 - Keep the horizontal logo at least 40 px tall with clear space around it; do not stretch or recolor it.
