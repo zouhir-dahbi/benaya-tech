@@ -127,15 +127,30 @@
   .form-input {
     @apply w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition;
   }
-  .type-toggle {
-    @apply flex-1 text-center py-3 px-4 rounded-lg border-2 border-slate-200 text-slate-600 font-semibold cursor-pointer transition-all;
+  /* Selectable option card wrapping an sr-only radio */
+  .select-card {
+    @apply relative flex flex-col items-start gap-0.5 rounded-xl border-2 border-slate-200 bg-white p-4 pr-10 cursor-pointer transition-colors hover:border-slate-300 hover:bg-slate-50;
   }
-  .type-toggle.selected {
-    @apply border-primary bg-primary/5 text-primary;
+  .select-card.selected {
+    @apply border-primary bg-primary/5 hover:border-primary hover:bg-primary/5;
   }
-  /* The real radio is sr-only, so the label has to carry the focus ring. */
-  .type-toggle:focus-within {
+  /* The real radio is sr-only, so the card has to carry the focus ring. */
+  .select-card:focus-within {
     @apply border-primary ring-2 ring-primary ring-offset-2;
+  }
+  .select-card-check {
+    @apply absolute top-3 right-3 w-5 h-5 text-primary opacity-0 transition-opacity;
+  }
+  .select-card.selected .select-card-check {
+    @apply opacity-100;
+  }
+
+  /* Numbered form section heading */
+  .form-step {
+    @apply inline-flex items-center gap-3 font-display font-semibold text-lg text-ink;
+  }
+  .form-step-number {
+    @apply w-7 h-7 shrink-0 rounded-full bg-primary/10 text-primary text-sm font-semibold flex items-center justify-center;
   }
 
   /* Keyboard focus */

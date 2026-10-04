@@ -36,9 +36,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-2xl">
-      <div x-data="assessmentForm()" x-init="init()">
+  <section class="bg-slate-50 py-16">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div x-data="assessmentForm()" x-init="init()" class="card p-6 sm:p-10">
         <!-- Success -->
         <div x-show="submitted" x-cloak class="card p-12 text-center">
           <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
@@ -62,20 +62,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
 
           <fieldset>
-            <legend class="form-label">This is for my...</legend>
-            <div class="flex gap-4">
-              <label class="type-toggle" :class="{ selected: customerType === 'residential' }">
-                <input type="radio" name="customer_type" value="residential" x-model="customerType" class="sr-only" /> Home
+            <legend class="mb-4">
+              <span class="form-step"><span class="form-step-number">1</span>Who is this for?</span>
+            </legend>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <label class="select-card" :class="{ selected: customerType === 'residential' }">
+                <input type="radio" name="customer_type" value="residential" x-model="customerType" class="sr-only" />
+                <svg class="w-6 h-6 text-primary mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 11l9-8 9 8M5 10v10a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1V10" /></svg>
+                <span class="font-semibold text-ink">My home</span>
+                <span class="text-xs text-slate-500">House, townhome, or condo</span>
+                <svg class="select-card-check" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd" /></svg>
               </label>
-              <label class="type-toggle" :class="{ selected: customerType === 'commercial' }">
-                <input type="radio" name="customer_type" value="commercial" x-model="customerType" class="sr-only" /> Business
+              <label class="select-card" :class="{ selected: customerType === 'commercial' }">
+                <input type="radio" name="customer_type" value="commercial" x-model="customerType" class="sr-only" />
+                <svg class="w-6 h-6 text-primary mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V5a1 1 0 011-1h7a1 1 0 011 1v16M14 21V9h4a1 1 0 011 1v11M8 8h3M8 12h3M8 16h3" /></svg>
+                <span class="font-semibold text-ink">My business</span>
+                <span class="text-xs text-slate-500">Office, retail, or multi-site</span>
+                <svg class="select-card-check" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd" /></svg>
               </label>
             </div>
           </fieldset>
 
+          <h2 class="form-step -mb-4 w-full border-t border-slate-200 pt-6">
+            <span class="form-step-number">2</span>Your details
+            <span class="ml-1 text-xs font-normal text-slate-400">* required</span>
+          </h2>
+
           <div class="grid sm:grid-cols-2 gap-6">
-            <div><label class="form-label" for="name">Full Name</label><input class="form-input" type="text" id="name" name="name" required /></div>
-            <div><label class="form-label" for="email">Email</label><input class="form-input" type="email" id="email" name="email" required /></div>
+            <div><label class="form-label" for="name">Full Name <span class="text-primary" aria-hidden="true">*</span></label><input class="form-input" type="text" id="name" name="name" required /></div>
+            <div><label class="form-label" for="email">Email <span class="text-primary" aria-hidden="true">*</span></label><input class="form-input" type="email" id="email" name="email" required /></div>
           </div>
           <div class="grid sm:grid-cols-2 gap-6">
             <div><label class="form-label" for="phone">Phone</label><input class="form-input" type="tel" id="phone" name="phone" /></div>
@@ -83,8 +98,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
 
           <!-- What they need -->
-          <div class="space-y-3 border-t border-slate-200 pt-6">
-            <label class="form-label">What do you need help with? (select all that apply)</label>
+          <div class="space-y-3 border-t border-slate-200 pt-6" role="group" aria-labelledby="needs-heading">
+            <h2 id="needs-heading" class="form-step"><span class="form-step-number">3</span>What do you need help with?</h2>
+            <p class="text-sm text-slate-500">Select all that apply.</p>
             <div class="grid sm:grid-cols-2 gap-3">
               {[
                 ['Wi-Fi / Networking', 'wifi_networking'],
@@ -105,8 +121,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           </div>
 
+          <h2 x-show="customerType" x-cloak class="form-step -mb-4 w-full border-t border-slate-200 pt-6"><span class="form-step-number">4</span>Property details</h2>
+
           <!-- Residential -->
-          <div x-show="customerType === 'residential'" x-cloak class="grid sm:grid-cols-2 gap-6 border-t border-slate-200 pt-6">
+          <div x-show="customerType === 'residential'" x-cloak class="grid sm:grid-cols-2 gap-6">
             <div>
               <label class="form-label" for="r_property_type">Property Type</label>
               <select class="form-input" id="r_property_type" name="property_type">
@@ -120,7 +138,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
 
           <!-- Commercial -->
-          <div x-show="customerType === 'commercial'" x-cloak class="grid sm:grid-cols-2 gap-6 border-t border-slate-200 pt-6">
+          <div x-show="customerType === 'commercial'" x-cloak class="grid sm:grid-cols-2 gap-6">
             <div><label class="form-label" for="c_property_type">Business / Property Type</label><input class="form-input" type="text" id="c_property_type" name="business_type" placeholder="e.g. retail, office, warehouse" /></div>
             <div>
               <label class="form-label" for="c_locations">Number of Locations</label>
