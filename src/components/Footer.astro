@@ -9,8 +9,16 @@ const year = new Date().getFullYear();
   <div class="container mx-auto px-4 py-16">
     <div class="grid md:grid-cols-4 gap-10 mb-12">
       <div class="md:col-span-1">
-        <a href={withBase('/')} class="inline-flex items-center leading-none mb-4">
-          <span class="font-display font-bold text-2xl text-white tracking-tight">{site.shortName}</span>
+        <a href={withBase('/')} aria-label={`${site.name} home`} class="inline-flex items-center mb-4 p-1">
+          <img
+            src={withBase('/brand/benaya-logo-horizontal-white.svg')}
+            alt={site.name}
+            width="1301"
+            height="522"
+            class="h-20 w-auto max-w-full object-contain"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
         <p class="text-sm text-slate-400 mb-5">
           Smart home, Wi-Fi, security, and technology installation for homes and small businesses throughout Northern Virginia.

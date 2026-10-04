@@ -31,7 +31,8 @@ benaya-tech/
 │   │       ├── index.astro            # service-area hub
 │   │       └── [city].astro           # ONE template -> city pages from serviceAreas.ts
 │   └── styles/global.css              # Tailwind layers + component classes
-├── public/images/                     # logo + photography (served as-is)
+├── public/brand/                      # Benaya Tech SVG and PNG logo variants
+├── public/images/                     # archived legacy brand assets
 ├── .github/workflows/deploy.yml       # GitHub Pages build + deploy
 └── astro.config.mjs
 ```
@@ -39,6 +40,18 @@ benaya-tech/
 Adding or editing a service-area page = editing `src/data/serviceAreas.ts`. No new file needed.
 
 The header nav is intentionally compact (Smart Home, Wi-Fi, Security, Installation, About, plus a Request Service CTA) — Small Business, Service Areas, and Contact stay one click away via the footer and the mobile menu.
+
+## Brand assets
+
+The supplied Benaya Tech brand kit is installed in `public/brand/` (logos) and
+`public/` (browser icons, app icons, manifest, and social-sharing image).
+
+- Use `benaya-logo-horizontal.svg` on light backgrounds and the `-white` variant on dark backgrounds.
+- Use the stacked logo for larger identity placements such as the About page.
+- Use the standalone mark for compact placements, and PNG variants where SVG is unsupported.
+- Keep the horizontal logo at least 40 px tall with clear space around it; do not stretch or recolor it.
+- `BaseLayout.astro` applies the icons and branded preview across the site; explicit page images (including blog posts) retain their own previews.
+- Asset URLs respect `BASE_PATH`, and the manifest uses relative URLs to support GitHub project pages.
 
 ## Commands
 

@@ -42,7 +42,16 @@ const articleLd = {
   datePublished: pubDate.toISOString(),
   dateModified: (updatedDate ?? pubDate).toISOString(),
   author: { '@type': 'Organization', name: site.name },
-  publisher: { '@type': 'Organization', name: site.name },
+  publisher: {
+    '@type': 'Organization',
+    name: site.name,
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL(withBase('/brand/benaya-logo-horizontal.svg'), Astro.site ?? Astro.url.origin).href,
+      width: 1301,
+      height: 522,
+    },
+  },
   mainEntityOfPage: Astro.url.href,
 };
 ---

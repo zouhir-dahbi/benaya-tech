@@ -3,7 +3,6 @@ import { getImage } from 'astro:assets';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
-import defaultOgSource from '../images/AdobeStock_2123545446.jpeg';
 import '../styles/global.css';
 
 interface Props {
@@ -12,10 +11,12 @@ interface Props {
   image?: ImageMetadata;
   jsonLd?: Record<string, unknown>[];
 }
-const { title, description, image = defaultOgSource, jsonLd = [] } = Astro.props;
+const { title, description, image, jsonLd = [] } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const ogImage = await getImage({ src: image, width: 1200, height: 630, fit: 'cover' });
-const ogImageUrl = new URL(ogImage.src, Astro.site ?? Astro.url.origin).href;
+const ogImage = image ? await getImage({ src: image, width: 1200, height: 630, fit: 'cover' }) : undefined;
+const ogImageUrl = new URL(ogImage?.src ?? `${base}/og-image.png`, Astro.site ?? Astro.url.origin).href;
+const ogImageAlt = image ? description : `${site.name} — Smart Home, Networking, Security`;
+const logoUrl = new URL(`${base}/brand/benaya-logo-horizontal.svg`, Astro.site ?? Astro.url.origin).href;
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -23,6 +24,7 @@ const organizationLd = {
   description,
   url: Astro.site?.href,
   image: ogImageUrl,
+  logo: logoUrl,
   telephone: site.phoneHref.replace('tel:', ''),
   email: site.email,
   areaServed: 'Northern Virginia, VA',
@@ -46,19 +48,25 @@ const organizationLd = {
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <script type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
     {jsonLd.map((block) => (
       <script type="application/ld+json" set:html={JSON.stringify(block)} />
     ))}
 
-    <link rel="icon" type="image/x-icon" href={`${base}/images/favicon.ico`} />
-    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/images/favicon-32.png`} />
-    <link rel="apple-touch-icon" sizes="180x180" href={`${base}/images/apple-touch-icon.png`} />
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href={`${base}/favicon.ico`} />
+    <link rel="icon" type="image/svg+xml" sizes="any" href={`${base}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/favicon-32x32.png`} />
+    <link rel="icon" type="image/png" sizes="16x16" href={`${base}/favicon-16x16.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
+    <link rel="manifest" href={`${base}/site.webmanifest`} />
+    <meta name="theme-color" content="#0B0F14" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
