@@ -124,6 +124,31 @@
   .type-toggle.selected {
     @apply border-primary bg-primary/5 text-primary;
   }
+  /* The real radio is sr-only, so the label has to carry the focus ring. */
+  .type-toggle:focus-within {
+    @apply border-primary ring-2 ring-primary ring-offset-2;
+  }
+
+  /* Keyboard focus */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed top-4 left-4 z-[60] bg-white text-primary font-semibold px-5 py-3 rounded-lg shadow-card ring-2 ring-primary;
+  }
+  .btn-primary,
+  .btn-white,
+  .btn-outline,
+  .nav-link,
+  .nav-link-mobile,
+  .nav-dropdown-link,
+  .area-tag,
+  .category-pill {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:rounded-lg;
+  }
+  .btn-outline-light {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  }
 
   /* Blog category pill */
   .category-pill {
@@ -198,4 +223,24 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* These start at opacity 0 and rely on the animation to reveal them. */
+  .animate-fade-in,
+  .animate-fade-in-delay,
+  .animate-fade-in-delay-2 {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
