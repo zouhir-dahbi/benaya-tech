@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Cctv, Drill, ShieldCheck, Smartphone } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
@@ -15,10 +16,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
 
 const outcomes = [
-  ['Visibility', "Know what's happening around your property.", 'M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z|M15 12a3 3 0 11-6 0 3 3 0 016 0z'],
-  ['Control', 'View and manage cameras from anywhere.', 'M2 8a4 4 0 014-4h12a4 4 0 014 4v8a4 4 0 01-4 4H6a4 4 0 01-4-4V8z|M16 12a2 2 0 11-4 0 2 2 0 014 0z'],
-  ['Reliability', 'Coverage that works when you need it to.', 'M12 3l7 3v6c0 4.97-3.05 8.5-7 9-3.95-.5-7-4.03-7-9V6l7-3z'],
-  ['Professional Install', 'Planned, wired, and tested by someone who does this daily.', 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
+  { title: 'Visibility', body: "Know what's happening around your property.", icon: Cctv },
+  { title: 'Control', body: 'View and manage cameras from anywhere.', icon: Smartphone },
+  { title: 'Reliability', body: 'Coverage that works when you need it to.', icon: ShieldCheck },
+  { title: 'Professional Install', body: 'Planned, wired, and tested by someone who does this daily.', icon: Drill },
 ];
 
 const faqs = [
@@ -43,12 +44,10 @@ const faqs = [
   <section class="bg-white py-16">
     <div class="container mx-auto px-4">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {outcomes.map(([title, body, icon]) => (
-          <div class="card card-hover p-6 text-center">
+        {outcomes.map(({ title, body, icon: Icon }) => (
+          <div class="card card-feature card-hover p-6 text-center">
             <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
-              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {icon.split('|').map((d) => <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d={d} />)}
-              </svg>
+              <Icon class="w-7 h-7" strokeWidth={1.75} aria-hidden="true" />
             </div>
             <h2 class="font-display font-semibold text-lg text-ink mb-1">{title}</h2>
             <p class="text-sm text-slate-600">{body}</p>

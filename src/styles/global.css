@@ -5,13 +5,19 @@
 @layer base {
   :root {
     color-scheme: light;
+    --surface-canvas: #f2f5f5;
+    --surface-mist: #eaf1f8;
+    --surface-sage: #eaf2ee;
+    --surface-grid: rgba(37, 99, 235, 0.045);
+    --surface-shadow: 0 6px 24px -8px rgba(15, 23, 42, 0.14);
   }
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
   body {
-    @apply bg-white text-slate-800 font-body antialiased;
+    @apply text-slate-800 font-body antialiased;
+    background-color: var(--surface-canvas);
   }
   h1, h2, h3, h4 {
     @apply font-display;
@@ -25,6 +31,30 @@
 }
 
 @layer components {
+  main > :is(section, article).bg-white {
+    background-color: var(--surface-canvas);
+    background-image: linear-gradient(115deg, rgba(234, 242, 238, 0.65), transparent 65%);
+  }
+  main > section.bg-slate-50 {
+    background-color: var(--surface-sage);
+    background-image: linear-gradient(115deg, transparent 35%, rgba(234, 241, 248, 0.75));
+  }
+  main > section.bg-gradient-to-b {
+    background-color: var(--surface-mist);
+    background-image:
+      linear-gradient(var(--surface-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--surface-grid) 1px, transparent 1px),
+      linear-gradient(115deg, var(--surface-mist), var(--surface-sage));
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+  }
+  main > :is(section, article):is(.bg-white, .bg-slate-50, .bg-gradient-to-b) {
+    border-top-width: 0;
+    border-bottom-width: 0;
+  }
+  main form .border-t {
+    border-top-width: 0;
+  }
+
   /* Buttons */
   /* Transparent border keeps filled buttons the same height as .btn-outline. */
   .btn-primary {
@@ -67,18 +97,68 @@
 
   /* Cards (light) */
   .card {
-    @apply bg-white rounded-2xl border border-slate-200 shadow-card transition-all duration-300;
+    @apply rounded-lg transition-all duration-300;
+    --card-surface: #e5edf9;
+    --card-accent: #2359b6;
+    background-color: var(--card-surface);
+    box-shadow: var(--surface-shadow);
+  }
+  .card:nth-child(3n + 2) {
+    --card-surface: #e1efe9;
+    --card-accent: #147568;
+  }
+  .card:nth-child(3n) {
+    --card-surface: #e8ecf0;
+    --card-accent: #4b6073;
   }
   .card-hover:hover {
-    @apply shadow-card-hover -translate-y-1 border-primary/30;
+    @apply shadow-card-hover -translate-y-1;
+  }
+  .card :is(.text-slate-400, .text-slate-500) {
+    @apply text-slate-600;
+  }
+  .card .btn-outline,
+  .card a.text-primary {
+    @apply text-primary-dark;
+  }
+  .card .btn-outline:hover {
+    @apply text-white;
+  }
+  .card-feature > div:first-child {
+    @apply rounded-lg text-white;
+    background-color: var(--card-accent);
+    box-shadow: 0 4px 12px -4px var(--card-accent);
+  }
+  .card-feature > div:first-child svg {
+    color: inherit;
   }
 
   /* Cards (on dark sections) */
   .card-dark {
-    @apply bg-ink-light rounded-2xl border border-white/10 transition-all duration-300;
+    @apply rounded-lg transition-all duration-300;
+    --card-surface: #203c56;
+    --card-accent: #306dc4;
+    background-color: var(--card-surface);
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.4);
+  }
+  .card-dark:nth-child(3n + 2) {
+    --card-surface: #1c433f;
+    --card-accent: #218475;
+  }
+  .card-dark:nth-child(3n) {
+    --card-surface: #343f4b;
+    --card-accent: #5a7189;
+  }
+  .card-dark p {
+    color: #d0dee7;
   }
   .card-dark-hover:hover {
-    @apply border-primary/40 -translate-y-1;
+    @apply -translate-y-1;
+    box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.55);
+  }
+  .process-card .step-number {
+    @apply rounded-lg text-white;
+    background-color: var(--card-accent);
   }
 
   /* Section label / eyebrow */
@@ -107,7 +187,8 @@
 
   /* Area tag pill */
   .area-tag {
-    @apply inline-block bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-full text-sm hover:border-primary hover:text-primary transition-colors;
+    @apply inline-block bg-white text-slate-600 px-4 py-2 rounded-full text-sm hover:bg-primary/10 hover:text-primary transition-colors;
+    box-shadow: 0 2px 8px -3px rgba(15, 23, 42, 0.12);
   }
 
   /* Process step */

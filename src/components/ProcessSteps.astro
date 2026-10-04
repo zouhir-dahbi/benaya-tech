@@ -29,7 +29,7 @@ const steps = [
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {steps.map(([title, body], i) => (
-        <div class:list={[dark ? 'card-dark' : 'card', 'p-6']}>
+        <div class:list={[dark ? 'card-dark' : 'card', 'process-card p-6']}>
           <div class:list={['step-number', dark && 'bg-primary/20 text-primary-light']}>{i + 1}</div>
           <h3 class:list={['font-semibold mb-1', dark ? 'text-white' : 'text-ink']}>{title}</h3>
           <p class:list={['text-sm', dark ? 'text-slate-400' : 'text-slate-600']}>{body}</p>
