@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const lastUpdated = 'October 4, 2026';
+---
+
+<BaseLayout
+  title="Terms & Conditions | Benaya Tech"
+  description="The terms that apply to the use of the Benaya Tech website and to smart-home, Wi-Fi, security, and installation work requested through it."
+>
+  <PageHeader
+    title="Terms & Conditions"
+    sub={`The terms that apply to this website and to work requested through it. Last updated ${lastUpdated}.`}
+  />
+
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-3xl article-content">
+      <p>
+        These terms govern your use of this website and any request you submit to {site.name}{' '}
+        (“we,” “us,” or “our”). By using the site or submitting a request, you agree to them.
+        Nothing in these terms limits rights you may have under applicable consumer protection law.
+      </p>
+
+      <h2>Our services</h2>
+      <p>
+        We design, install, configure, test, document, and support smart-home, Wi-Fi and
+        networking, security camera, and technology installation projects for homes and small
+        businesses in Northern Virginia. Information on this site is general in nature. It is not a
+        quote, a guarantee of results, or technical advice for a specific property.
+      </p>
+
+      <h2>Requests, estimates, and scheduling</h2>
+      <p>
+        Submitting the request form does not create a contract and does not reserve an appointment.
+        It begins a conversation. Work proceeds only once both parties have agreed in writing to a
+        specific scope, through an estimate, proposal, or work order.
+      </p>
+      <p>
+        Estimates are based on the information available when they are prepared and may be revised
+        after an on-site assessment or if conditions differ from what was described. Where a written
+        estimate, proposal, or invoice addresses scope, pricing, payment, scheduling, cancellation,
+        or warranty, that document governs and takes precedence over this page.
+      </p>
+
+      <h2>Your responsibilities</h2>
+      <ul>
+        <li>Provide accurate information about the property and what you want to accomplish</li>
+        <li>Provide safe, lawful access to the property and work areas on the scheduled date</li>
+        <li>
+          Obtain any permission required before work begins, including from a landlord, building
+          owner, or homeowners association
+        </li>
+        <li>Ensure an authorized adult is available where access or decisions are required</li>
+        <li>Keep your own account credentials, passwords, and access codes secure</li>
+      </ul>
+      <p>
+        Existing wiring, network conditions, construction materials, and third-party equipment can
+        affect what is achievable at a given property. We will tell you when we find such a
+        constraint and discuss the options before proceeding.
+      </p>
+
+      <h2>Third-party products and services</h2>
+      <p>
+        Equipment we install is manufactured by third parties and is covered by their warranties and
+        terms, not ours. Some devices depend on services outside our control, such as your internet
+        connection, a manufacturer's cloud platform, or a paid subscription. We are not responsible
+        for third-party outages, account changes, pricing changes, feature removals, or decisions to
+        discontinue a product or service.
+      </p>
+
+      <h2>Payment</h2>
+      <p>
+        Payment terms, deposits, and accepted methods are set out in your written estimate or
+        invoice.
+      </p>
+
+      <h2>Cancellation and rescheduling</h2>
+      <p>
+        If you need to cancel or reschedule, contact us as early as you reasonably can so the
+        appointment can be reassigned. Any notice requirements or charges that apply will be stated
+        in your written estimate.
+      </p>
+
+      <h2>Workmanship</h2>
+      <p>
+        We perform work in a professional and workmanlike manner. Any warranty on our labor is
+        stated in your written estimate or invoice. Except as stated there and as required by law,
+        we make no other warranties regarding the work.
+      </p>
+
+      <h2>Website content</h2>
+      <p>
+        The content on this site, including text, layout, graphics, and the {site.name} name and
+        logo, belongs to us or our licensors. You may view and share it for personal,
+        non-commercial purposes. You may not copy, republish, or use it commercially without our
+        written permission.
+      </p>
+
+      <h2>Acceptable use</h2>
+      <p>
+        You agree not to misuse this site: no attempts to disrupt or gain unauthorized access to it,
+        no automated scraping or bulk collection of its content, and no submission of false requests
+        or another person's details without their permission.
+      </p>
+
+      <h2>Disclaimer and limitation of liability</h2>
+      <p>
+        This website is provided on an “as is” and “as available” basis. We do not warrant that it
+        will be uninterrupted, error-free, or that its content is complete or current at all times.
+      </p>
+      <p>
+        To the fullest extent permitted by law, we are not liable for indirect, incidental, special,
+        or consequential damages arising from your use of this site. For any claim arising from work
+        we performed, our total liability is limited to the amount you paid us for that work.
+        Nothing in these terms excludes liability that cannot be excluded by law.
+      </p>
+
+      <h2>Links to other sites</h2>
+      <p>
+        This site may link to third-party websites. We do not control them and are not responsible
+        for their content, products, or privacy practices.
+      </p>
+
+      <h2>Privacy</h2>
+      <p>
+        Our <a href={`${base}/privacy`}>Privacy Policy</a> explains how we handle the information
+        you share with us.
+      </p>
+
+      <h2>Governing law</h2>
+      <p>
+        These terms are governed by the laws of the Commonwealth of Virginia, without regard to its
+        conflict of laws rules. Any dispute will be brought in the state or federal courts located
+        in Virginia.
+      </p>
+
+      <h2>Changes to these terms</h2>
+      <p>
+        We may update these terms. The current version will always be posted here with the date it
+        was last updated. The terms in effect when you submitted your request apply to that request.
+      </p>
+
+      <h2>Contact us</h2>
+      <p>
+        {site.name}<br />
+        Email: <a href={site.emailHref}>{site.email}</a><br />
+        Phone: <a href={site.phoneHref}>{site.phoneDisplay}</a><br />
+        Serving Northern Virginia
+      </p>
+    </div>
+  </section>
+</BaseLayout>

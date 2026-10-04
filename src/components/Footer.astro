@@ -104,8 +104,12 @@ const socialLinks = [
       </div>
     </div>
 
-    <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-500">
+    <div class="border-t border-white/10 pt-8 text-sm text-slate-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-center sm:text-left">
       <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <ul class="flex items-center justify-center gap-6">
+        <li><a href={withBase('/privacy')} class="hover:text-primary-light transition-colors">Privacy Policy</a></li>
+        <li><a href={withBase('/terms')} class="hover:text-primary-light transition-colors">Terms &amp; Conditions</a></li>
+      </ul>
     </div>
   </div>
 </footer>

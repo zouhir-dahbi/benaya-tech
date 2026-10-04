@@ -6,6 +6,7 @@ import { site } from '../data/site';
 // Set PUBLIC_FORMSPREE_ID in .env (see .env.example) to enable submissions.
 const formId = import.meta.env.PUBLIC_FORMSPREE_ID || '';
 const formAction = `https://formspree.io/f/${formId || 'YOUR_FORM_ID'}`;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -132,6 +133,18 @@ const formAction = `https://formspree.io/f/${formId || 'YOUR_FORM_ID'}`;
           </div>
 
           <div><label class="form-label" for="notes">Tell us what you're trying to accomplish</label><textarea class="form-input" id="notes" name="notes" rows="4" placeholder="e.g. Wi-Fi doesn't reach the upstairs bedrooms, and I'd also like a video doorbell installed"></textarea></div>
+
+          <div class="border-t border-slate-200 pt-6 space-y-4">
+            <label class="flex items-start gap-3 text-sm text-slate-700">
+              <input type="checkbox" name="email_opt_in" value="yes" class="mt-0.5 w-5 h-5 shrink-0 rounded border-slate-300 text-primary focus:ring-2 focus:ring-primary/20" />
+              <span>Email me occasional maintenance reminders, tips, and offers from {site.name}. Optional — unsubscribe any time.</span>
+            </label>
+            <p class="text-xs text-slate-500">
+              We'll reply about this request either way. By submitting, you agree to our{' '}
+              <a href={`${base}/privacy`} class="underline underline-offset-2 hover:text-primary">Privacy Policy</a> and{' '}
+              <a href={`${base}/terms`} class="underline underline-offset-2 hover:text-primary">Terms &amp; Conditions</a>.
+            </p>
+          </div>
 
           <button type="submit" class="btn-primary w-full text-lg" :disabled="sending">
             <span x-show="!sending">Send Request</span>
