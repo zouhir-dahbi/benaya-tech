@@ -1,0 +1,64 @@
+---
+import { googleReviews } from '../data/reviews';
+
+const { profileUrl, writeReviewUrl, rating, count, items } = googleReviews;
+const hasReviews = items.length > 0;
+const starPath =
+  'M11.48 3.5a.56.56 0 011.04 0l2.12 4.3 4.75.69c.46.07.64.63.31.95l-3.44 3.35.81 4.73c.08.46-.4.81-.81.59L12 15.78l-4.25 2.23c-.41.22-.89-.13-.81-.59l.81-4.73-3.44-3.35a.56.56 0 01.31-.95l4.75-.69 2.12-4.3z';
+const starStates = (value: number) => Array.from({ length: 5 }, (_, i) => i < Math.round(value));
+---
+
+<section class="bg-slate-50 py-16">
+  <div class="container mx-auto px-4">
+    {hasReviews ? (
+      <div>
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="eyebrow">Reviews</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-3">What Our Customers Say</h2>
+          {rating > 0 && (
+            <p class="flex flex-wrap items-center justify-center gap-2 text-slate-600">
+              <span class="flex gap-0.5" aria-hidden="true">
+                {starStates(rating).map((filled) => (
+                  <svg class:list={['w-5 h-5', filled ? 'text-amber-400' : 'text-slate-300']} viewBox="0 0 24 24" fill="currentColor"><path d={starPath} /></svg>
+                ))}
+              </span>
+              <span><strong class="text-ink">{rating.toFixed(1)}</strong> from {count} Google review{count === 1 ? '' : 's'}</span>
+            </p>
+          )}
+        </div>
+
+        <ul class="grid md:grid-cols-3 gap-6">
+          {items.map((review) => (
+            <li class="card p-6 flex flex-col">
+              <div class="flex gap-0.5 mb-4" role="img" aria-label={`${review.rating} out of 5 stars`}>
+                {starStates(review.rating).map((filled) => (
+                  <svg class:list={['w-4 h-4', filled ? 'text-amber-400' : 'text-slate-300']} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={starPath} /></svg>
+                ))}
+              </div>
+              <blockquote class="text-slate-600 grow">{review.text}</blockquote>
+              <footer class="text-sm text-slate-500 mt-4 pt-4 border-t border-slate-100">
+                <cite class="not-italic font-semibold text-ink">{review.author}</cite>
+                <span class="mx-1.5">·</span>{review.date}
+              </footer>
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap justify-center gap-4 mt-10">
+          <a href={profileUrl} target="_blank" rel="noopener noreferrer" class="btn-outline">Read all reviews on Google</a>
+          {writeReviewUrl && (
+            <a href={writeReviewUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">Leave a review</a>
+          )}
+        </div>
+      </div>
+    ) : (
+      <div class="empty-state max-w-3xl mx-auto">
+        <p class="font-semibold text-slate-700 mb-1">Licensing, insurance, and review information</p>
+        <p class="text-sm">This section will display verified credentials and customer reviews once available. We do not publish unverified trust claims.</p>
+        {writeReviewUrl && (
+          <a href={writeReviewUrl} target="_blank" rel="noopener noreferrer" class="btn-outline mt-6">Leave a Google review</a>
+        )}
+      </div>
+    )}
+  </div>
+</section>
